@@ -3,3 +3,4 @@ for(let i=0;i<10;i++){
   const a= $("<span>OK</span>");
   $("body").append(a);
 }
+alert(50);
