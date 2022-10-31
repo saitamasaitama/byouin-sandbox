@@ -1,3 +1,14 @@
 .dot {
  position:absolute;
+ background-color:gray;
 }
+.x-0 {left:0vmin;}
+.x-1 { left:5vmin;}
+.x-2 {left:10vmin;}
+.x-3 {left:15vmin;}
+.x-4 {left:20vmin;}
+.x-5 {left:25vmin;}
+.x-6 {left:30vmin;}
+.x-7 {left:35vmin;}
+.x-8 {left:40vmin;}
+.x-9 {left:45vmin;}
