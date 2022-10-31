@@ -14,9 +14,6 @@ function Life(x ,y){
  // result.addClass("x-5");
   return result;
 }
-function Death(){
-  return $("<span>🟥</span>");
-}
 const A=$("#A");
 const B=$("#B");
 const Main=$("#Main");
@@ -39,8 +36,7 @@ function rand(){
   for(let x=0;x<16;x++){
     const r=0.5<Math.random();
     Table[x][y].data("current",r);  
-  }
-  
+  }  
 }
 
 function tick(){
@@ -58,7 +54,6 @@ function liveCheck(x,y){
   if(liveCheckC(x,y-1))count++;
   if(liveCheckC(x+1,y-1))count++;
   if(liveCheckC(x-1,y))count++;
-  if(liveCheckC(x,y))count++;
   if(liveCheckC(x+1,y))count++;
   if(liveCheckC(x-1,y+1))count++;
   if(liveCheckC(x,y+1))count++;
