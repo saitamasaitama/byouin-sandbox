@@ -2,6 +2,14 @@
  position:absolute;
  background-color:gray;
 }
+
+.life {
+  color:green;
+}
+.dead{
+  color:red;
+}
+
 .x-0 {left:0vmin;}
 .x-1 { left:5vmin;}
 .x-2 {left:10vmin;}
