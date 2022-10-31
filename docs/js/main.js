@@ -65,7 +65,7 @@ function liveCheck(x,y){
   if(liveCheckC(x+1,y+1))count++;
     
     // 0-2 dead
-    if(count < 3 || 4<= count){
+    if(count < 3 || 5<= count){
       Table[x][y].data("next",false);
     }else{
       Table[x][y].data("next",true);
