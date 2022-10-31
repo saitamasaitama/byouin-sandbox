@@ -34,13 +34,23 @@ for(let y=0;y<16;y++){
 }
 // table done
 
+function rand(){
+  for(let y=0;y<16;y++)
+  for(let x=0;x<16;x++){
+    const r=0.5<Math.random();
+    Table[x][y].data("current",r);  
+  }
+  
+}
+
 function tick(){
 
   for(let y=0;y<16;y++)
   for(let x=0;x<16;x++)
-  Table[x][y].data("next",false);
-  
+  liveCheck(x,y);
+    
   updateLives();
+  
 }
 function liveCheck(x,y){
   let count=0;
@@ -54,6 +64,12 @@ function liveCheck(x,y){
   if(liveCheckC(x,y+1))count++;
   if(liveCheckC(x+1,y+1))count++;
     
+    // 0-2 dead
+    if(count < 3 || 4<= count){
+      Table[x][y].data("next",false);
+    }else{
+      Table[x][y].data("next",true);
+    }
    
 }
 
@@ -76,10 +92,12 @@ function updateLives(){
       }else{
         e.addClass("dead")
       }
+      e.data("current",e.data("next"));
     }
   }
  
   
 }
+rand()
 setInterval(tick,1000);
 //alert(50);
