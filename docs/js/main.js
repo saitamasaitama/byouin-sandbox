@@ -1,4 +1,7 @@
 console.log(1);
+const w=20;
+const h=20;
+const interval =800;
 function Life(x ,y){
   const result= $("<span>■</span>");
   result.addClass("dot");
@@ -19,11 +22,10 @@ const B=$("#B");
 const Main=$("#Main");
 
 const Table=[];
-for(let y=0;y<16;y++){
+for(let y=0;y<h;y++){
   const line=[];
-  for(let x=0;x<16;x++){
+  for(let x=0;x<w;x++){
     const life=Life(x,y)
-    //alert(x*16+y);
     Main.append(life)
     line.push(life);
   }
@@ -32,8 +34,8 @@ for(let y=0;y<16;y++){
 // table done
 
 function rand(){
-  for(let y=0;y<16;y++)
-  for(let x=0;x<16;x++){
+  for(let y=0;y<h;y++)
+  for(let x=0;x<w;x++){
     const r=0.5<Math.random();
     Table[x][y].data("current",r);  
   }  
@@ -41,8 +43,8 @@ function rand(){
 
 function tick(){
 
-  for(let y=0;y<16;y++)
-  for(let x=0;x<16;x++)
+  for(let y=0;y<h;y++)
+  for(let x=0;x<w;x++)
   liveCheck(x,y);
     
   updateLives();
@@ -59,26 +61,28 @@ function liveCheck(x,y){
   if(liveCheckC(x,y+1))count++;
   if(liveCheckC(x+1,y+1))count++;
     
-    // 0-2 dead
-    if(count < 3 || 5<= count){
-      Table[x][y].data("next",false);
-    }else{
+    const self=Table[x][y].data("current");
+    const r3=  !self && count ==3;
+    const l23= self && (count ==3 || count == 2);
+    if(r3 || l23 ){
       Table[x][y].data("next",true);
+    }else{
+      Table[x][y].data("next",false);
     }
    
 }
 
 function liveCheckC(x,y){
   if(x<0)return false;
-  if(16<=x)return false;
+  if(w<=x)return false;
   if(y<0)return false;
-  if(16<=y)return false;
+  if(h<=y)return false;
   return Table[x][y].data("current");
 }
 
 function updateLives(){
-  for(let y=0;y<16;y++){
-    for(let x=0;x<16;x++){
+  for(let y=0;y<h;y++){
+    for(let x=0;x<w;x++){
       const e= Table[x][y];
       e.removeClass("dead");
       e.removeClass("life");
@@ -90,9 +94,7 @@ function updateLives(){
       e.data("current",e.data("next"));
     }
   }
- 
-  
 }
 rand()
-setInterval(tick,1000);
+setInterval(tick,interval);
 //alert(50);
