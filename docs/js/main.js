@@ -13,9 +13,13 @@ function Life(x ,y){
   result.css("top",y*1.1+"em");
   result.addClass("life");
   
-  result.on("click",function(){alert(x+":"+y);});
+  result.on("click",function(){rise(x,y);});
  // result.addClass("x-5");
   return result;
+}
+
+function rise(x,y){
+  Table[y][x].data("current",true);
 }
 const A=$("#A");
 const B=$("#B");
