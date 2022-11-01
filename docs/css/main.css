@@ -4,10 +4,10 @@
 }
 
 .life {
-  color:green;
+  color:yellow;
 }
 .dead{
-  color:red;
+  color:black;
 }
 
 .x-0 {left:0vmin;}
